@@ -1,0 +1,74 @@
+a {
+    text-decoration: none;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+.tiem-net {
+    background-color: #313742;
+    margin-top: 5px;
+    text-align: left;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+}
+.title {
+    margin-left: 5px;
+}
+.khungChat {
+    height: 250px;
+    font-size: 14px;
+    overflow-y: auto;
+
+    scrollbar-color: #313742 #313742;
+
+    .avatar {
+        height: 24px;
+        width: 24px;
+        border-radius: 99px;
+    }
+    .userName {
+        margin-left: 5px;
+        color: rgb(114, 153, 36);
+    }
+    .message {
+        color: #e0e6f0;
+    }
+    .uploadTime {
+        float: right;
+    }
+    .chat {
+        height: 35px;
+        &:hover {
+            .uploadTime {
+                color: rgb(88, 130, 247);
+            }
+        }
+    }
+}
+.nhapChat {
+    padding: 5px;
+    .input {
+        width: 100%;
+        color: var(--text_color);
+        outline: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .btn-gui {
+        text-align: right;
+        .icon-gui {
+            font-size: large;
+            cursor: pointer;
+            &:hover {
+                color: rgb(85, 85, 218);
+            }
+            &:active {
+                color: rgb(138, 138, 253);
+            }
+        }
+    }
+}

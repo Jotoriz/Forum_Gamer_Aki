@@ -1,0 +1,87 @@
+:root {
+    --text_color: #bdc6db;
+}
+body {
+    background-color: #292e39;
+    color: var(--text_color);
+}
+
+.text {
+    text-align: left;
+}
+.uploadChuDe {
+    margin-top: 30px;
+}
+.tab {
+    background-color: #eee;
+    font-size: 13px;
+    padding: 2px 5px 10px 5px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: #eee2 #eee;
+    cursor: pointer;
+    & > * {
+        &:hover {
+            .countUp {
+                background-color: aliceblue;
+            }
+            .mot,
+            .hai,
+            .ba {
+                color: red;
+            }
+        }
+    }
+}
+.in_ty_ti {
+    color: blue;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+    .countUp {
+        color: red;
+        background-color: #cccccc;
+        padding: 1px 4px;
+        border-radius: 3px;
+        margin-right: 5px;
+    }
+    .mot {
+        color: white;
+        background-color: red;
+    }
+    .hai {
+        color: white;
+        background-color: rgb(249, 33, 33);
+    }
+    .ba {
+        color: white;
+        background-color: rgb(253, 91, 91);
+    }
+}
+.in_ty_ti {
+    .types {
+        color: white;
+        margin-right: 5px;
+        background-color: #548eff;
+        padding: 3px 5px;
+        border-radius: 99px;
+    }
+    .timNguoiChsGame {
+        background-color: #548eff;
+    }
+    .HoiGame_ThaoLuan {
+        background-color: #4caf50;
+    }
+    .newGame {
+        background-color: mediumslateblue;
+    }
+    .giaiTri {
+        background-color: darkorange;
+    }
+}
+.actor {
+    text-align: right;
+}
