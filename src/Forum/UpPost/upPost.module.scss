@@ -1,0 +1,92 @@
+.UpPost {
+    margin-top: 20px;
+}
+
+.KhungInput {
+    width: 1320px;
+    background-color: #313742;
+    margin-top: 5px;
+    text-align: left;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    // padding: 30px;
+    border-radius: 8px;
+}
+
+.Nhap_TieuDe {
+    margin: 20px 10px 5px 10px;
+    border: 1px solid #5a6578;
+    background-color: #3b424d;
+    border-radius: 10px;
+    height: 58px;
+
+    .Title_Chude {
+        cursor: pointer;
+        text-align: center;
+        border: none;
+        font-size: small;
+        .Title {
+            margin-right: 5px;
+        }
+        &:hover {
+            .icon {
+                color: rgb(88, 130, 247);
+            }
+        }
+    }
+
+    .input_TieuDe {
+        font-size: x-large;
+        width: 100%;
+        color: var(--text_color);
+        outline: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+}
+.types {
+    color: white;
+    margin-right: 5px;
+    background-color: #548eff;
+    padding: 3px 5px;
+    width: 100%;
+    border-radius: 10px;
+}
+.timNguoiChsGame {
+    background-color: #548eff;
+}
+.HoiGame_ThaoLuan {
+    background-color: #4caf50;
+}
+.newGame {
+    background-color: mediumslateblue;
+}
+.giaiTri {
+    background-color: darkorange;
+}
+
+.input_NoiDung {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #3b424d;
+    width: 100%;
+    color: var(--text_color);
+    outline: none;
+    border-top: 2px solid #548eff;
+    box-shadow: none;
+    margin-top: 20px;
+    height: 400px;
+    resize: none;
+}
+
+.btn_UpLoad_Cha {
+    margin-top: 10px;
+    border-radius: 0 0 10px 10px;
+    padding: 15px;
+    border-top: 2px solid #616c84;
+    background-color: #3b424d;
+    text-align: center;
+}
+.icon_UpLoad {
+    font-size: smaller;
+}

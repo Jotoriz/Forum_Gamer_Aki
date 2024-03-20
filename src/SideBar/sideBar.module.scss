@@ -1,0 +1,22 @@
+.sidebar {
+    margin-top: 40px;
+    background-color: #373c47;
+    width: 100%;
+    border-top: 4px solid #569eff;
+    padding: 30px;
+    text-align: left;
+
+    .Box {
+        padding-right: 50px;
+    }
+    .title {
+        margin-left: 5px;
+    }
+    p {
+        margin: 10px 0 10px 0;
+        font-size: small;
+    }
+    hr {
+        margin: 0;
+    }
+}
