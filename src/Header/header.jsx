@@ -46,6 +46,8 @@ function Header() {
                     <Nav className={cx("hover")}>TÀI NGUYÊN</Nav>
                 </Nav>
                 <div className={cx("right")}>
+                    {
+                    !localStorage.getItem('authenticate') &&
                     <Row>
                         <Col xl='7' className={cx("login")} onClick={handleLoginClick}>
                                 <FontAwesomeIcon icon={faKey} />
@@ -72,13 +74,18 @@ function Header() {
                                 </div>
                             )}
                     </Row>
+                    }
+                    {
+                    localStorage.getItem('authenticate') && 
+                     <div className={cx("right")}>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                        <FontAwesomeIcon icon={faBell} />
+                        <FontAwesomeIcon icon={faSearch} />
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                    </div>
+                    }
                 </div>
-                {/* <div className={cx("right")}>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    <FontAwesomeIcon icon={faBell} />
-                    <FontAwesomeIcon icon={faSearch} />
-                    <FontAwesomeIcon icon={faEllipsisV} />
-                </div> */}
+
             </Container>
         </Navbar>
         

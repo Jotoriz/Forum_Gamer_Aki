@@ -1,8 +1,8 @@
 import { SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE } from '../Action/Types';
 
 const initialState = {
-    isAuthenticated: false,
-    user: null,
+    authenticate: localStorage.getItem('authenticate') || false,
+    user: localStorage.getItem('user') || null,
     error: null,
 };
 

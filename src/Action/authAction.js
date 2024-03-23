@@ -1,36 +1,97 @@
 import axios from 'axios';
 import { SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE } from './Types';
+import { notification } from 'antd';
 
 // Đăng ký
 export const signup = (userData) => async (dispatch) => {
     try {
         const res = await axios.post('http://localhost:8000/api/signup', userData);
-
-        dispatch({
-            type: SIGNUP_SUCCESS,
-            payload: res.data,
-        });
+        if (res.status === 201) {
+            const { user } = res.data;
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('authenticate', true);
+            dispatch({
+                type: SIGNUP_SUCCESS,
+                payload: res.data,
+            });
+            notification.success({
+                message: 'Thành Công',
+                description: 'Đăng ký thành công',
+            });
+            window.location.reload();
+        } else {
+            dispatch({
+                type: SIGNUP_FAILURE,
+                payload: { error: res.data.error },
+            });
+            notification.error({
+                message: 'Lỗi',
+                description: 'Đăng ký không thành công',
+            });
+        }
     } catch (error) {
+        console.log('error', error);
+        if (error.response.data.message == undefined) {
+            notification.error({
+                message: 'Error',
+                description: `${error.response.data.error}`,
+            });
+        } else {
+            notification.error({
+                message: 'Error',
+                description: `${error.response.data.message}`,
+            });
+        }
         dispatch({
             type: SIGNUP_FAILURE,
-            payload: error.response.data.error,
+            payload: { error: error.response.data.message },
         });
     }
 };
 
 // Đăng nhập
-export const login = (userData) => async (dispatch) => {
+export const signin = (userData) => async (dispatch) => {
     try {
         const res = await axios.post('http://localhost:8000/api/signin', userData);
-
-        dispatch({
-            type: LOGIN_SUCCESS,
-            payload: res.data,
-        });
+        if (res.status === 200) {
+            const { user } = res.data;
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('authenticate', true);
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res.data,
+            });
+            notification.success({
+                message: 'Thành Công',
+                description: 'Đăng Nhập thành công',
+            });
+            window.location.reload();
+        } else {
+            dispatch({
+                type: LOGIN_FAILURE,
+                payload: { error: res.data.error },
+            });
+            notification.error({
+                message: 'Lỗi',
+                description: 'Đăng nhập không thành công',
+            });
+        }
     } catch (error) {
+        console.log('error', error);
+        if (error.response.data.message == undefined) {
+            notification.error({
+                message: 'lỗi',
+                description: `${error.response.data.error}`,
+            });
+        } else {
+            notification.error({
+                message: 'lỗi',
+                description: `${error.response.data.message}`,
+            });
+        }
         dispatch({
             type: LOGIN_FAILURE,
-            payload: error.response.data.error,
+            payload: { error: error.response.data.message },
         });
     }
 };
