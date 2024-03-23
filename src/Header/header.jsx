@@ -23,6 +23,10 @@ function Header() {
         setShowLogin(false);
         setShowRegister(true);
     }
+    const openLogin = () => {
+        setShowLogin(true);
+        setShowRegister(false);
+    }
     const closeAuth = () => {
         setShowLogin(false);
         setShowRegister(false);
@@ -64,7 +68,7 @@ function Header() {
                         </Col>
                             {showRegister && (
                                 <div className={cx("popupRegister")}>
-                                    <Register/>
+                                    <Register clicker={openLogin}/>
                                 </div>
                             )}
                     </Row>

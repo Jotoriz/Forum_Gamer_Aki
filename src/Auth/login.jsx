@@ -8,17 +8,18 @@ import { Button, ButtonBase } from "@mui/material";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import { login } from "../Action/authAction";
 
 const cx =  classNames.bind(style);
 
 
-function Login({clicker}) {
+function Login({clicker, login, error }) {
     const [hidePass, setHidePass] = useState(false);
 
     const IsHidePassword  = () =>{
         setHidePass(!hidePass)
     }
-    
     return ( 
         <Container className={cx("Login")}>
             <Row className={cx("nd")}>
@@ -57,4 +58,4 @@ function Login({clicker}) {
     );
 }
 
-export default Login;
+export default connect(null, { login: login })(Login);
