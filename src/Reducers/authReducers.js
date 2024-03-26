@@ -1,4 +1,4 @@
-import { SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE } from '../Action/Types';
+import { SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../Action/Types';
 
 const initialState = {
     authenticate: localStorage.getItem('authenticate') || false,
@@ -23,6 +23,13 @@ const authReducer = (state = initialState, action) => {
                 isAuthenticated: false,
                 user: null,
                 error: action.payload,
+            };
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isAuthenticated: false,
+                user: null,
+                error: null,
             };
         default:
             return state;

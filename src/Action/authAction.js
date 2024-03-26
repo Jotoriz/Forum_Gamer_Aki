@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE } from './Types';
+import { SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from './Types';
 import { notification } from 'antd';
 
 // Đăng ký
@@ -94,4 +94,10 @@ export const signin = (userData) => async (dispatch) => {
             payload: { error: error.response.data.message },
         });
     }
+};
+export const logout = () => async (dispatch) => {
+    localStorage.removeItem('authenticate');
+    localStorage.removeItem('user');
+    dispatch({ type: LOGOUT_SUCCESS });
+    window.location.reload();
 };

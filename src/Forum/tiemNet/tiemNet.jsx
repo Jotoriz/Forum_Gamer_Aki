@@ -5,120 +5,72 @@ import styles from "./tiemNet.module.scss";
 import { Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addMessage } from '../../Action/tiemnetAction';
 const cx = classNames.bind(styles)
 
 function TiemNet() {
-
     const  [message, setMessage] = useState("");
+    const [messages, setMessages] = useState([]);
+    const messagesEndRef = useRef(null);
+
+    const dispath = useDispatch();
+
+    useEffect(() => {
+        const storedMessages = JSON.parse(localStorage.getItem('messages')) || [];
+        setMessages(storedMessages);
+    }, []);
+
+
 
     const clickMessage = (e) =>{
         e.preventDefault();
         setMessage(e.target.value);
     }
-    
+    const Time = () => {
+        const now = new Date();
 
-    const onSubmit = () =>{
-        console.log(message);
-    }
+        // Lấy thông tin về thời gian hiện tại
+        const year = now.getFullYear(); // Năm (ví dụ: 2022)
+        const month = now.getMonth() + 1; // Tháng (giá trị từ 0 - 11, cộng thêm 1 để hiển thị từ 1 - 12)
+        const date = now.getDate(); // Ngày trong tháng (giá trị từ 1 - 31)
 
+        // Tạo chuỗi đại diện cho ngày tháng năm
+        const formattedDate = `${date}/${month}/${year}`;
+
+        return formattedDate;
+    };
+    const user = JSON.parse( localStorage.getItem("user"));
+    const username = user && user.username ? user.username : "Ai đó";
+    const TTMessage = {
+        avatar: "",
+        username: username,
+        message: message,
+        uploadTime: Time()
+    };
     const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      onSubmit();
+        event.preventDefault();
+        const inputElement = event.target;
+        inputElement.value = '';
+        onSubmit(event);
+        
     }
   };
+      const onSubmit = () =>{
+        if(message != ""){
+            dispath(addMessage(TTMessage));
+            setMessages([...messages, TTMessage]);
+            setMessage("");
+        }
+    }
+
     const handleClick = (event) => {
       onSubmit();
   };
 
-    const tinNhan = [
-        {
-            id: 1,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "LA KaneMC",
-            message: "Ai biết vẽ model leviathan blox fruit không z bằng blockbench )))",
-            uploadTime: "Hôm nay"
-        },
-        {
-            id: 2,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Jotori",
-            message: "https://discord.com/channels/507304429255393322/1213590726869520444 fabric modding my beloved",
-            uploadTime: "Hôm nay"
-        },
-        {
-            id: 3,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "ngongoclinh2008",
-            message: "Custom Enchantments v2.1.7c cái phần /es nó bị sao z mn	",
-            uploadTime: "Hôm nay"
-        },
-        {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-               {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-               {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-               {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-                       {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-                       {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-                       {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-                       {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-                       {
-            id: 4,
-            avatar: "https://i.pinimg.com/736x/0f/21/7d/0f217d0189f841ae794500966ab1845a.jpg",
-            userName: "Real",
-            message: "Có ai chỉ mình tải bản mod 1.19 được không",
-            uploadTime: "Hôm nay"
-        },
-        
-        
-    ]
+    // const tinNhan = JSON.parse(localStorage.getItem('messages')) || [];
 
     const formatMessage = (message) => {
         const linkRegex = /(https?:\/\/[^\s]+)/g;
@@ -136,7 +88,9 @@ function TiemNet() {
             }
         });
     };
-
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
     return ( 
         <div className={cx('tiem-net')}>
             <Row>
@@ -149,12 +103,13 @@ function TiemNet() {
             <Row className={cx("khungChat")}>
                 <Col>
                 {
-                    tinNhan.map((message, index)=>{
+                    messages.map((message, index)=>{
                         return(
-                            <Row className={cx("chat")}>
+                            <Row className={cx("chat")} ref={index === messages.length - 1 ? messagesEndRef : null}>
                                 <Col>
-                                <img className={cx("avatar")} src={message.avatar}></img>
-                                <a className={cx("userName")}>{message.userName}: </a>
+                                {message.avatar &&<img className={cx("avatar")} src={message.avatar}></img>}
+                                
+                                <a className={cx("userName",username == message.username? "chinhChu": "" )}>{message.username}: </a>
                                 <span className={cx("message")}>{formatMessage(message.message)}</span>
                                 <span className={cx("uploadTime")}>{message.uploadTime}</span>
                                 </Col>
@@ -175,5 +130,6 @@ function TiemNet() {
         </div>
      );
 }
+
 
 export default TiemNet;

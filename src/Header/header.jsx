@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faBell, faSearch, faEllipsisV, faKey, faIdCard } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faBell, faSearch, faEllipsisV, faKey, faIdCard, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 
 import styles from "./header.module.scss";
@@ -9,12 +9,16 @@ import Logo from "../img/Logo.jpg"
 import { Link } from 'react-router-dom';
 import Login from '../Auth/login';
 import Register from '../Auth/register';
+import { useDispatch } from 'react-redux';
+import { logout } from '../Action/authAction';
 
 const cx = classNames.bind(styles)
 
 function Header() {
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
+
+    const dispath = useDispatch();
 
     const handleLoginClick = () => {
         setShowLogin(true);
@@ -34,6 +38,11 @@ function Header() {
     const handleRegisterClick = () => {
         setShowRegister(true);
     };
+
+    const Logout = () =>{
+        dispath(logout());
+    }
+    console.log(localStorage.getItem("user"));
     return ( 
         <Navbar className={cx("header")}>
             <Container>
@@ -78,10 +87,11 @@ function Header() {
                     {
                     localStorage.getItem('authenticate') && 
                      <div className={cx("right")}>
+                        <image src={localStorage.getItem("user").avt} alt="Avatar"></image>
                         <FontAwesomeIcon icon={faEnvelope} />
                         <FontAwesomeIcon icon={faBell} />
                         <FontAwesomeIcon icon={faSearch} />
-                        <FontAwesomeIcon icon={faEllipsisV} />
+                        <FontAwesomeIcon icon={faArrowRightFromBracket} onClick={Logout}/>
                     </div>
                     }
                 </div>
