@@ -9,16 +9,18 @@ import Logo from "../img/Logo.jpg"
 import { Link } from 'react-router-dom';
 import Login from '../Auth/login';
 import Register from '../Auth/register';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../Action/authAction';
+import { getUser } from '../Action/userAction';
 
 const cx = classNames.bind(styles)
 
 function Header() {
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
+    const token = localStorage.getItem('token');
 
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
 
     const handleLoginClick = () => {
         setShowLogin(true);
@@ -40,9 +42,14 @@ function Header() {
     };
 
     const Logout = () =>{
-        dispath(logout());
+        dispatch(logout());
     }
-    console.log(localStorage.getItem("user"));
+     useEffect( () => {
+        if (token) {
+            dispatch(getUser(token));
+        }
+    }, [dispatch, token]);
+    const user = useSelector((state) => state.user);
     return ( 
         <Navbar className={cx("header")}>
             <Container>
@@ -86,8 +93,8 @@ function Header() {
                     }
                     {
                     localStorage.getItem('authenticate') && 
-                     <div className={cx("right")}>
-                        <image src={localStorage.getItem("user").avt} alt="Avatar"></image>
+                    <div className={cx("right")}>
+                        <img src={user?.user?.avt} width="30" height="30" alt="" className={cx("avatar")} />
                         <FontAwesomeIcon icon={faEnvelope} />
                         <FontAwesomeIcon icon={faBell} />
                         <FontAwesomeIcon icon={faSearch} />
@@ -101,5 +108,4 @@ function Header() {
         
      );
 }
-
 export default Header;

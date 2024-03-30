@@ -7,8 +7,8 @@ export const signup = (userData) => async (dispatch) => {
     try {
         const res = await axios.post('http://localhost:8000/api/signup', userData);
         if (res.status === 201) {
-            const { user } = res.data;
-            localStorage.setItem('user', JSON.stringify(user));
+            const { token } = res.data;
+            localStorage.setItem('token', JSON.stringify(token));
             localStorage.setItem('authenticate', true);
             dispatch({
                 type: SIGNUP_SUCCESS,
@@ -54,8 +54,8 @@ export const signin = (userData) => async (dispatch) => {
     try {
         const res = await axios.post('http://localhost:8000/api/signin', userData);
         if (res.status === 200) {
-            const { user } = res.data;
-            localStorage.setItem('user', JSON.stringify(user));
+            const { token } = res.data;
+            localStorage.setItem('token', JSON.stringify(token));
             localStorage.setItem('authenticate', true);
             dispatch({
                 type: LOGIN_SUCCESS,
@@ -97,7 +97,7 @@ export const signin = (userData) => async (dispatch) => {
 };
 export const logout = () => async (dispatch) => {
     localStorage.removeItem('authenticate');
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     dispatch({ type: LOGOUT_SUCCESS });
     window.location.reload();
 };
