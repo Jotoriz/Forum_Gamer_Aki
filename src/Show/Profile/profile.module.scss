@@ -1,0 +1,102 @@
+.profile {
+    margin-top: 50px;
+    color: aliceblue;
+}
+.profile_Left {
+    text-align: center;
+    .avatar {
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+    }
+    .userName {
+        margin-top: 20px;
+        font-weight: 700;
+        font-size: large;
+    }
+}
+.form {
+    margin-top: 30px;
+    input {
+        margin-left: 10px;
+        width: 50%;
+        color: white;
+        outline: none;
+        background: transparent;
+        border: none;
+        border-bottom: solid 2px palevioletred;
+        box-shadow: none;
+    }
+}
+.form_close {
+    margin-top: 70px;
+}
+.input_email {
+    border-bottom: solid 2px palevioletred;
+}
+.input_userName {
+    width: 100%;
+    border-bottom: solid 2px greenyellow;
+}
+.btn_doimk {
+    margin-right: 80px;
+}
+.id {
+    display: none;
+}
+.btn_thoat {
+    margin-right: 30px;
+}
+.popupChangePassword {
+    cursor: auto;
+    position: absolute;
+    top: 54%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    z-index: 98;
+    width: 639px;
+    height: 300px;
+    background-color: #343a46;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    text-align: left;
+    animation: fadeAndScaleIn 0.2s ease-in-out forwards;
+}
+.dong-background {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100vh;
+    z-index: 97;
+    cursor: auto;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes fadeAndScaleIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+.loading {
+    margin-top: 200px;
+}
+.input_upload {
+    clip: rect(0 0 0 0);
+    height: 1;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1;
+}
+.image_preview {
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
+}

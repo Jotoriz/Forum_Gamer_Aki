@@ -8,6 +8,7 @@ import { faFeatherPointed, faPlusCircle } from '@fortawesome/free-solid-svg-icon
 import TiemNet from './tiemNet/tiemNet';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Chat } from '@voiceflow/react-chat';
 
 const cx = classNames.bind(styles)
 function Forum() {
@@ -166,6 +167,19 @@ function Forum() {
                 return "timNguoiChsGame";
   }
 }
+
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+                window.voiceflow.chat.load({
+                verify: { projectID: '6610989bed6f6d46ae251c9d' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+                });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+
     return ( 
         <Container  className={cx('forum')}>
             <Row className={cx('text')}>
@@ -242,6 +256,7 @@ function Forum() {
             </Tab>
             </Tabs>
             <TiemNet/>
+            
         </Container>
      );
 }
