@@ -6,11 +6,20 @@ import { api } from '../api';
 
 export const getUser = async (token) => {
     try {
-        const res = await axios.get(api('/api/user/:id'), {
+        const res = await axios.get(api('/api/user/token/:id'), {
             headers: {
                 Authorization: `Bearer ${dinhDangToken(token)}`,
             },
         });
+        return res.data;
+    } catch (error) {
+        console.error('Lỗi khi lấy thông tin người dùng:', error);
+        return null;
+    }
+};
+export const getUserById = async () => {
+    try {
+        const res = await axios.get(api('/api/user/getAll'));
         return res.data;
     } catch (error) {
         console.error('Lỗi khi lấy thông tin người dùng:', error);

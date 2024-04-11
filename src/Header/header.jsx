@@ -69,7 +69,7 @@ function Header() {
                 }
             })
         }
-    }, [dispatch, token]);
+    }, [token]);
     let KtAvt = true;
     if( user?.avt == undefined || user?.avt == "https://a0.anyrgb.com/pngimg/1658/1292/little-boy-icon-little-girl-avatar-ico-icon-design-boy-cartoon-cartoon-character-sitting-cool.png"){
         console.log(user?.avt);
